@@ -5,7 +5,7 @@ import { TodoKeyoLocalStorage } from '../models/enum/todo-key-local-storage';
 @Injectable({
   providedIn: 'root',
 })
-export class TodoSignalsService {
+export class TodosSignalService {
   public todosState = signal<Todo[]>([]);
 
   public updateTodos({ id, title, description, done }: Todo) {
