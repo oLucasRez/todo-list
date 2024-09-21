@@ -42,11 +42,13 @@ export class TodoCardComponent implements OnInit {
     this.todosSignalService.saveTodosInLocalStorage();
   }
 
-  handleDoneTodo(id: number) {
+  handleToggleTodo(id: number) {
     this.todosSignal.mutate((todos) => {
       const todoIndex = todos.findIndex((todo) => todo.id === id);
 
       todos[todoIndex].done = !todos[todoIndex].done;
+
+      this.saveTodosInLocalStorage();
     });
   }
 
