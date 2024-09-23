@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, effect, inject, OnInit } from '@angular/core';
 import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +27,12 @@ export class TodoCardComponent implements OnInit {
   private todosSignal = this.todosSignalService.todosState;
 
   public todosList = computed(() => this.todosSignal());
+
+  constructor() {
+    effect(() => {
+      console.log(this.todosSignalService.todosState());
+    });
+  }
 
   ngOnInit(): void {
     this.getTodosInLocalStorage();
